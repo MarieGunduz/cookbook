@@ -1,16 +1,18 @@
 import React from 'react'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 function Popular() {
-  const varA = 3;
+  const [popular, setPopular] = useState();
+  // console.log("POP", popular)
   useEffect(() => {
     getPopular()
-  }, [varA])
+  }, [popular])
 
   const getPopular = async () => {
     const api = await fetch(`https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=9&exclude-tags=dairy`)
     const data = await api.json();
-    console.log(data);
+    setPopular(data.recipes)
+   // console.log(data);
   }
 
   return (
