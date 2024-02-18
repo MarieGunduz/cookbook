@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/splide/css/skyblue';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 function Veggies() {
   const [veggie, setVeggie] = useState([]);
@@ -50,9 +51,11 @@ function Veggies() {
               return (
                 <SplideSlide key={recipe?.id}>
                   <Card>
+                  <Link to={"/recipe/" + recipe.id}>
                     <p>{recipe?.title}</p>
                     <img src={recipe?.image} alt={recipe?.title} />
                     <Gradient />
+                    </Link>
                   </Card>
                 </SplideSlide>
               )
