@@ -20,7 +20,7 @@ function Cuisine() {
 
   return <Grid>
     {cuisine.map((item) => {
-      return(
+      return (
         <Card key={item.id}>
           <img src={item.image} alt="" />
           <h4>{item.title}</h4>

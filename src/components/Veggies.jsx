@@ -46,7 +46,7 @@ function Veggies() {
           }}
         >
           {
-            veggie.map((recipe) => {
+            veggie ? veggie.map((recipe) => {
               return (
                 <SplideSlide key={recipe?.id}>
                   <Card>
@@ -56,8 +56,8 @@ function Veggies() {
                   </Card>
                 </SplideSlide>
               )
-            })
-          }
+            }): <p>no api connection</p>
+          } 
         </Splide>
       </Wrapper>
     </div>
