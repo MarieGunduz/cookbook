@@ -35,10 +35,21 @@ function Recipe() {
         <Button className={activeTab === 'ingredients' ? 'active' : ''} onClick={() => setActiveTab("ingredients")}>
             Ingredients
         </Button>
-        <div>
+        {activeTab === 'instructions' && (
+            <div>
             <h3 dangerouslySetInnerHTML={{__html: details.summary}}></h3>
             <h3 dangerouslySetInnerHTML={{__html: details.instructions}}></h3>
         </div>
+        )};
+        {activeTab === 'ingredients' && (
+            <ul>
+            {details.extendedIngredients.map((ingredients) => (
+            <li key={ingredients.id}>{ingredients.original}</li>
+            
+            ))}
+        </ul>
+        )}
+        
        </Info>
     </DetailWrapper>
 };
