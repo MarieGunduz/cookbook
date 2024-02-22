@@ -30,10 +30,10 @@ function Search() {
 }
 
 const FormStyle = styled.form`
-    margin: 0rem 20rem;
+    margin: 0rem 25%;
 
      div {
-        width: 100%;
+        min-width: 95%;
         position: relative;
         }
 
@@ -46,7 +46,7 @@ const FormStyle = styled.form`
         border: none;
         border-radius: 1rem;
         outline: none;
-        width: 250%;
+        min-width: 100%;
     }
 
     svg {

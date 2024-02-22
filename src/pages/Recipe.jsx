@@ -23,34 +23,35 @@ function Recipe() {
     }, [params.name]);
 
 
-  return <DetailWrapper>
-    <div>
-        <h2>{details.title}</h2>
-        <img src={details.image} alt="" />
-    </div>
-    <Info>
-        <Button className={activeTab === 'instructions' ? 'active' : ''} onClick={() => setActiveTab("instructions")}>
-            Instructions
-         </Button>
-        <Button className={activeTab === 'ingredients' ? 'active' : ''} onClick={() => setActiveTab("ingredients")}>
-            Ingredients
-        </Button>
-        {activeTab === 'instructions' && (
-            <div>
-            <h3 dangerouslySetInnerHTML={{__html: details.summary}}></h3>
-            <h3 dangerouslySetInnerHTML={{__html: details.instructions}}></h3>
-        </div>
-        )};
-        {activeTab === 'ingredients' && (
-            <ul>
-            {details.extendedIngredients.map((ingredients) => (
-            <li key={ingredients.id}>{ingredients.original}</li>
-            
-            ))}
-        </ul>
-        )}
-        
-       </Info>
+    return <DetailWrapper>
+
+        <Info>
+            <Header>
+                <h2>{details?.title}</h2>
+                <img src={details?.image} alt={details?.title} width={300} />
+            </Header>
+            <Button className={activeTab === 'instructions' ? 'active' : ''} onClick={() => setActiveTab("instructions")}>
+                Instructions
+            </Button>
+            <Button className={activeTab === 'ingredients' ? 'active' : ''} onClick={() => setActiveTab("ingredients")}>
+                Ingredients
+            </Button>
+            {activeTab === 'instructions' && (
+                <div>
+                    <h3 dangerouslySetInnerHTML={{ __html: details.summary }}></h3>
+                    <h3 dangerouslySetInnerHTML={{ __html: details.instructions }}></h3>
+                </div>
+            )}
+            {activeTab === 'ingredients' && (
+                <ul>
+                    {details.extendedIngredients.map((ingredients) => (
+                        <li key={ingredients.id}>{ingredients.original}</li>
+
+                    ))}
+                </ul>
+            )}
+
+        </Info>
     </DetailWrapper>
 };
 
@@ -59,6 +60,7 @@ const DetailWrapper = styled.div`
    margin-top: 10rem;
    margin-bottom: 5rem;
    display: flex;
+   flex-direction: row;
    .active {
     background: linear-gradient(35deg, #494949, #313131);
     color: white;
@@ -75,6 +77,13 @@ const DetailWrapper = styled.div`
    }
 `;
 
+const Header = styled.div`
+   margin-bottom: 5%;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+`
 const Button = styled.button`
    padding: 1rem 2rem;
    color: #313131;
@@ -83,7 +92,7 @@ const Button = styled.button`
    margin-right: 2rem;
    font-weight: 600;
 `
-const Info =styled.div`
+const Info = styled.div`
    margin-left: 10rem;
 `
 
